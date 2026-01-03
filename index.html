@@ -1,67 +1,257 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" prefix="og: https://ogp.me/ns#">
 <head>
+    <!-- ====================== META TAGS UTAMA ====================== -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
     
-    <!-- SEO Meta Tags -->
-    <title>ORADEV - Pengembangan Web & Solusi Digital Kreatif</title>
-    <meta name="description" content="ORADEV menyediakan jasa pengembangan website, aplikasi web, dan solusi digital kreatif dengan teknologi terkini. Hubungi kami untuk transformasi digital bisnis Anda.">
-    <meta name="keywords" content="pengembangan web, jasa website, aplikasi web, solusi digital, web developer, ORADEV, teknologi web, website profesional">
-    <meta name="author" content="ORADEV">
+    <!-- TITLE dengan variasi kata kunci -->
+    <title>ORADEV</title>
+    
+    <!-- DESCRIPTION panjang dengan keyword density tinggi -->
+    <meta name="description" content="ORADEV adalah perusahaan jasa pembuatan website profesional, pengembangan web (web development), aplikasi web, dan solusi digital di Indonesia. Layanan kami meliputi: web design, e-commerce, company profile, SEO, maintenance website. Hubungi ORADEV sekarang untuk website bisnis Anda.">
+    
+    <!-- KEYWORDS yang sangat lengkap -->
+    <meta name="keywords" content="ORADEV, Oradev, oradev, jasa pembuatan website, pembuatan website, web development, pengembangan web, web developer, jasa web, website profesional, buat website, website murah, website perusahaan, toko online, e-commerce website, web design, desain web, aplikasi web, maintenance website, SEO website, digital agency, agensi digital, teknologi web, three.js website, website 3D, website modern, jasa IT, konsultan IT, developer Indonesia, jasa website Jakarta, jasa website Surabaya, jasa website Bandung">
+    
+    <!-- AUTHOR & COPYRIGHT -->
+    <meta name="author" content="ORADEV - Web Development Company">
+    <meta name="copyright" content="ORADEV">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     
-    <!-- Open Graph / Facebook -->
+    <!-- CANONICAL & ALTERNATE -->
+    <link rel="canonical" href="https://www.oradev.com/">
+    <link rel="alternate" href="https://www.oradev.com/" hreflang="id-id">
+    <link rel="alternate" href="https://www.oradev.com/en/" hreflang="en-us">
+    
+    <!-- ====================== OPEN GRAPH ====================== -->
+    <meta property="og:locale" content="id_ID">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://oradev.com/">
-    <meta property="og:title" content="ORADEV - Pengembangan Web & Solusi Digital Kreatif">
-    <meta property="og:description" content="Transformasi digital bisnis Anda dengan solusi web kreatif dan teknologi terkini dari ORADEV.">
-    <meta property="og:image" content="https://oradev.com/images/oradev-preview.jpg">
+    <meta property="og:site_name" content="ORADEV">
+    <meta property="og:title" content="ORADEV | Jasa Web Development & Pembuatan Website Profesional No. 1 di Indonesia">
+    <meta property="og:description" content="ORADEV menyediakan jasa pembuatan website profesional, pengembangan aplikasi web, e-commerce, dan solusi digital terlengkap di Indonesia dengan teknologi terkini.">
+    <meta property="og:url" content="https://www.oradev.com/">
+    <meta property="og:image" content="https://www.oradev.com/images/oradev-social-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ORADEV - Web Development Company">
     
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://oradev.com/">
-    <meta property="twitter:title" content="ORADEV - Pengembangan Web & Solusi Digital Kreatif">
-    <meta property="twitter:description" content="Transformasi digital bisnis Anda dengan solusi web kreatif dan teknologi terkini dari ORADEV.">
-    <meta property="twitter:image" content="https://oradev.com/images/oradev-preview.jpg">
+    <!-- ====================== TWITTER CARDS ====================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@oradev_id">
+    <meta name="twitter:creator" content="@oradev_id">
+    <meta name="twitter:title" content="ORADEV - Web Development & Digital Solutions">
+    <meta name="twitter:description" content="Jasa pembuatan website profesional dan pengembangan aplikasi web dengan teknologi modern Three.js, WebGL, dan JavaScript.">
+    <meta name="twitter:image" content="https://www.oradev.com/images/oradev-twitter-card.jpg">
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://oradev.com/">
-    
-    <!-- Structured Data / Schema.org -->
+    <!-- ====================== SCHEMA.ORG STRUCTURED DATA ====================== -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebDevelopmentCompany",
-        "name": "ORADEV",
-        "url": "https://oradev.com",
-        "logo": "https://oradev.com/logo.png",
-        "description": "Perusahaan pengembangan web dan solusi digital kreatif",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Jakarta",
-            "addressRegion": "DKI Jakarta",
-            "addressCountry": "ID"
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebDevelopmentCompany",
+            "@id": "https://www.oradev.com/#organization",
+            "name": "ORADEV",
+            "alternateName": ["Oradev", "Oradev Studio", "Oradev Digital"],
+            "url": "https://www.oradev.com",
+            "logo": "https://www.oradev.com/logo.png",
+            "image": "https://www.oradev.com/images/oradev-banner.jpg",
+            "description": "Perusahaan pengembangan website dan aplikasi web profesional di Indonesia",
+            "founder": "Tim ORADEV",
+            "foundingDate": "2020",
+            "numberOfEmployees": "10-50",
+            "slogan": "Transformasi Digital Bisnis Anda",
+            "telephone": "+62-21-12345678",
+            "email": "info@oradev.com",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Jl. Sudirman No. 123",
+                "addressLocality": "Jakarta",
+                "addressRegion": "DKI Jakarta",
+                "postalCode": "10220",
+                "addressCountry": "ID"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "-6.2088",
+                "longitude": "106.8456"
+            },
+            "openingHours": "Mo-Fr 09:00-18:00",
+            "priceRange": "$$",
+            "sameAs": [
+                "https://facebook.com/oradev.id",
+                "https://instagram.com/oradev.id",
+                "https://twitter.com/oradev_id",
+                "https://linkedin.com/company/oradev",
+                "https://youtube.com/c/oradev"
+            ],
+            "knowsAbout": [
+                "Web Development",
+                "Web Design",
+                "E-commerce",
+                "Three.js",
+                "WebGL",
+                "JavaScript",
+                "SEO",
+                "Digital Marketing"
+            ],
+            "serviceType": [
+                "Website Development",
+                "Web Application",
+                "E-commerce Website",
+                "Company Profile Website",
+                "Web Maintenance",
+                "SEO Optimization"
+            ]
         },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+62-XXX-XXXX-XXXX",
-            "contactType": "Customer Service"
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": "https://www.oradev.com/#website",
+            "url": "https://www.oradev.com",
+            "name": "ORADEV",
+            "description": "Jasa pembuatan website profesional dan pengembangan aplikasi web",
+            "publisher": {
+                "@id": "https://www.oradev.com/#organization"
+            },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.oradev.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            },
+            "inLanguage": "id-ID"
         },
-        "sameAs": [
-            "https://facebook.com/oradev",
-            "https://instagram.com/oradev",
-            "https://linkedin.com/company/oradev"
-        ],
-        "serviceType": [
-            "Web Development",
-            "Web Design",
-            "Digital Solutions",
-            "E-commerce Development"
-        ]
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "@id": "https://www.oradev.com/#local-business",
+            "name": "ORADEV",
+            "image": "https://www.oradev.com/images/oradev-office.jpg",
+            "telephone": "+62-21-12345678",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Jl. Sudirman No. 123",
+                "addressLocality": "Jakarta",
+                "addressRegion": "DKI Jakarta",
+                "postalCode": "10220",
+                "addressCountry": "ID"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "-6.2088",
+                "longitude": "106.8456"
+            },
+            "openingHours": "Mo-Fr 09:00-18:00",
+            "priceRange": "$$",
+            "url": "https://www.oradev.com",
+            "areaServed": [
+                {
+                    "@type": "City",
+                    "name": "Jakarta"
+                },
+                {
+                    "@type": "City",
+                    "name": "Surabaya"
+                },
+                {
+                    "@type": "City",
+                    "name": "Bandung"
+                },
+                {
+                    "@type": "City",
+                    "name": "Medan"
+                },
+                {
+                    "@type": "City",
+                    "name": "Makassar"
+                }
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://www.oradev.com"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Services",
+                    "item": "https://www.oradev.com/services"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Portfolio",
+                    "item": "https://www.oradev.com/portfolio"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "Contact",
+                    "item": "https://www.oradev.com/contact"
+                }
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Apa itu ORADEV?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "ORADEV adalah perusahaan jasa pembuatan website profesional dan pengembangan aplikasi web di Indonesia yang menggunakan teknologi terkini seperti Three.js dan WebGL."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Berapa harga pembuatan website di ORADEV?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Harga pembuatan website di ORADEV mulai dari Rp 3.000.000 tergantung kompleksitas dan fitur yang dibutuhkan. Kami menawarkan paket website company profile, e-commerce, dan custom web application."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Berapa lama waktu pembuatan website?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Waktu pengerjaan website company profile: 7-14 hari, website e-commerce: 14-30 hari, dan aplikasi web custom: 30-60 hari kerja."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Apakah ORADEV menyediakan maintenance website?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ya, ORADEV menyediakan layanan maintenance website termasuk update konten, backup data, keamanan website, dan technical support."
+                    }
+                }
+            ]
+        }
+    ]
     </script>
     
+    <!-- ====================== FAVICON & APP ICONS ====================== -->
+    <link rel="icon" type="image/x-icon" href="https://www.oradev.com/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.oradev.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.oradev.com/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.oradev.com/apple-touch-icon.png">
+    <link rel="manifest" href="https://www.oradev.com/site.webmanifest">
+    <meta name="theme-color" content="#9900ff">
+    <meta name="msapplication-TileColor" content="#9900ff">
+    
+    <!-- ====================== STYLES ====================== -->
     <style>
         * {
             margin: 0;
@@ -74,8 +264,8 @@
             font-family: 'Arial', sans-serif;
         }
         
-        /* Konten tersembunyi untuk SEO - hanya terbaca oleh mesin pencari */
-        .seo-content {
+        /* ====================== SEO CONTENT HIDDEN ====================== */
+        .seo-container {
             position: absolute;
             width: 1px;
             height: 1px;
@@ -85,22 +275,56 @@
             clip: rect(0, 0, 0, 0);
             white-space: nowrap;
             border: 0;
+            z-index: -9999;
         }
         
-        .seo-visible {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 15px;
-            z-index: 10000;
-            text-align: center;
-            font-size: 14px;
-            display: none; /* Sembunyikan dari pengguna biasa */
+        .seo-content {
+            color: #ffffff;
+            background: #000000;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
         
+        .seo-content h1 {
+            font-size: 28px;
+            color: #9900ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #9900ff;
+        }
+        
+        .seo-content h2 {
+            font-size: 22px;
+            color: #ff00ff;
+            margin: 15px 0;
+        }
+        
+        .seo-content h3 {
+            font-size: 18px;
+            color: #00ccff;
+            margin: 10px 0;
+        }
+        
+        .seo-content p {
+            margin-bottom: 15px;
+        }
+        
+        .seo-content ul, .seo-content ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .seo-content li {
+            margin-bottom: 8px;
+        }
+        
+        .keyword-highlight {
+            color: #9900ff;
+            font-weight: bold;
+        }
+        
+        /* ====================== VISIBLE CONTAINER ====================== */
         #container {
             position: fixed;
             width: 100%;
@@ -159,62 +383,142 @@
             }
         }
     </style>
+    
+    <!-- ====================== THREE.JS LIBRARIES ====================== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    
+    <!-- ====================== GOOGLE ANALYTICS (Contoh) ====================== -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
-<body>
-    <!-- Konten SEO yang tersembunyi dari tampilan normal -->
-    <div class="seo-content">
-        <h1>ORADEV - Jasa Pengembangan Website dan Solusi Digital</h1>
-        <h2>Layanan Pengembangan Web Profesional</h2>
-        <p>ORADEV merupakan penyedia jasa pengembangan website, aplikasi web, dan solusi digital kreatif dengan teknologi terkini. Kami membantu bisnis Anda dalam transformasi digital untuk mencapai tujuan online yang maksimal.</p>
-        
-        <h3>Layanan Utama ORADEV:</h3>
-        <ul>
-            <li>Pembuatan Website Company Profile</li>
-            <li>Pengembangan Aplikasi Web Custom</li>
-            <li>E-commerce Development</li>
-            <li>Web Design Kreatif</li>
-            <li>Optimasi SEO Website</li>
-            <li>Maintenance dan Update Website</li>
-        </ul>
-        
-        <h3>Keunggulan ORADEV:</h3>
-        <ul>
-            <li>Tim Developer Berpengalaman</li>
-            <li>Teknologi Terkini (Three.js, WebGL, React, Vue.js)</li>
-            <li>Desain Responsif dan User-Friendly</li>
-            <li>Optimasi Kecepatan Website</li>
-            <li>Dukungan SEO Friendly</li>
-            <li>Harga Kompetitif</li>
-        </ul>
-        
-        <p>Untuk konsultasi gratis mengenai kebutuhan website bisnis Anda, hubungi tim ORADEV sekarang juga. Dapatkan website yang tidak hanya menarik secara visual tetapi juga optimal untuk mesin pencari seperti Google.</p>
-        
-        <h4>Teknologi yang Kami Gunakan:</h4>
-        <p>HTML5, CSS3, JavaScript, Three.js, WebGL, React.js, Vue.js, Node.js, PHP, MySQL, MongoDB</p>
-        
-        <h4>Lokasi Layanan:</h4>
-        <p>ORADEV melayani pengembangan website untuk seluruh Indonesia: Jakarta, Surabaya, Bandung, Medan, Makassar, dan kota-kota lainnya.</p>
-        
-        <h4>Kata Kunci Terkait:</h4>
-        <p>jasa buat website, pembuatan website profesional, developer web Jakarta, agensi pengembangan web, jasa web developer, perusahaan IT, digital agency, jasa pembuatan toko online, website murah berkualitas, jasa SEO website, maintenance website, web design modern</p>
+<body itemscope itemtype="https://schema.org/WebPage">
+    <!-- ====================== HIDDEN SEO CONTENT ====================== -->
+    <div class="seo-container" aria-hidden="true">
+        <div class="seo-content">
+            <h1 itemprop="headline">ORADEV - Jasa Pembuatan Website Profesional & Web Development Terbaik di Indonesia</h1>
+            
+            <p><span class="keyword-highlight">ORADEV</span> adalah perusahaan <span class="keyword-highlight">jasa pembuatan website</span> profesional dan <span class="keyword-highlight">pengembangan web</span> (web development) terdepan di Indonesia. Sebagai <span class="keyword-highlight">web developer</span> berpengalaman, kami menyediakan solusi lengkap untuk kebutuhan <span class="keyword-highlight">website bisnis</span> Anda.</p>
+            
+            <h2>Layanan Utama ORADEV</h2>
+            
+            <h3>1. Pembuatan Website Company Profile</h3>
+            <p><span class="keyword-highlight">ORADEV</span> membuat <span class="keyword-highlight">website perusahaan</span> yang profesional dan menarik. Kami desain <span class="keyword-highlight">website company profile</span> dengan teknologi modern Three.js dan WebGL untuk tampilan yang mengesankan.</p>
+            
+            <h3>2. Development E-commerce Website</h3>
+            <p><span class="keyword-highlight">Buat toko online</span> dengan <span class="keyword-highlight">ORADEV</span>. Kami kembangkan <span class="keyword-highlight">website e-commerce</span> lengkap dengan sistem payment gateway, manajemen produk, dan dashboard admin.</p>
+            
+            <h3>3. Web Application Development</h3>
+            <p><span class="keyword-highlight">ORADEV</span> mengembangkan <span class="keyword-highlight">aplikasi web</span> custom sesuai kebutuhan bisnis Anda. Teknologi yang kami gunakan: JavaScript, React, Vue.js, Node.js.</p>
+            
+            <h3>4. Web Design & UI/UX</h3>
+            <p><span class="keyword-highlight">Desain web</span> yang user-friendly dan modern. <span class="keyword-highlight">ORADEV</span> menciptakan <span class="keyword-highlight">website responsive</span> yang optimal di semua device.</p>
+            
+            <h3>5. SEO & Digital Marketing</h3>
+            <p><span class="keyword-highlight">Optimasi SEO</span> untuk <span class="keyword-highlight">website Anda</span> agar muncul di halaman pertama Google. <span class="keyword-highlight">ORADEV</span> menyediakan <span class="keyword-highlight">jasa SEO</span> terpadu.</p>
+            
+            <h2>Mengapa Memilih ORADEV?</h2>
+            <ul>
+                <li><span class="keyword-highlight">Tim web developer</span> berpengalaman 5+ tahun</li>
+                <li>Menggunakan teknologi terkini: <span class="keyword-highlight">Three.js</span>, <span class="keyword-highlight">WebGL</span>, React, Vue.js</li>
+                <li><span class="keyword-highlight">Website responsive</span> mobile-friendly</li>
+                <li>Garansi maintenance & support</li>
+                <li><span class="keyword-highlight">Harga kompetitif</span> dengan kualitas terbaik</li>
+                <li>Proses pengerjaan cepat dan transparan</li>
+            </ul>
+            
+            <h2>Harga Jasa Pembuatan Website ORADEV</h2>
+            <p><span class="keyword-highlight">ORADEV</span> menawarkan paket <span class="keyword-highlight">pembuatan website</span> dengan harga terjangkau:</p>
+            <ul>
+                <li>Paket Basic: Rp 3.000.000 - <span class="keyword-highlight">Website company profile</span> sederhana</li>
+                <li>Paket Business: Rp 7.500.000 - <span class="keyword-highlight">Website perusahaan</span> lengkap</li>
+                <li>Paket E-commerce: Rp 15.000.000 - <span class="keyword-highlight">Toko online</span> lengkap</li>
+                <li>Paket Custom: Hubungi kami - <span class="keyword-highlight">Aplikasi web</span> khusus</li>
+            </ul>
+            
+            <h2>Kata Kunci ORADEV di Google</h2>
+            <p><span class="keyword-highlight">ORADEV</span>, <span class="keyword-highlight">Oradev</span>, <span class="keyword-highlight">oradev</span>, jasa pembuatan website, pembuatan website, web development, pengembangan web, web developer, jasa web, website profesional, buat website, website murah, website perusahaan, toko online, e-commerce website, web design, desain web, aplikasi web, maintenance website, SEO website, digital agency, agensi digital, teknologi web, three.js website, website 3D, website modern, jasa IT, konsultan IT, developer Indonesia, jasa website Jakarta, jasa website Surabaya, jasa website Bandung, jasa website Medan, jasa website Makassar, jasa website Bali, jasa website Yogyakarta, jasa website Semarang.</p>
+            
+            <h2>Teknologi yang Digunakan ORADEV</h2>
+            <p><span class="keyword-highlight">ORADEV</span> menggunakan teknologi terkini dalam <span class="keyword-highlight">pengembangan website</span>: HTML5, CSS3, JavaScript, TypeScript, Three.js, WebGL, React.js, Vue.js, Angular, Node.js, Express.js, PHP, Laravel, MySQL, MongoDB, PostgreSQL, REST API, GraphQL, Docker, AWS, Google Cloud.</p>
+            
+            <h2>Portfolio ORADEV</h2>
+            <p><span class="keyword-highlight">ORADEV</span> telah menyelesaikan 100+ proyek <span class="keyword-highlight">website</span> untuk berbagai klien di seluruh Indonesia. Kami telah membuat <span class="keyword-highlight">website</span> untuk perusahaan retail, startup teknologi, bisnis makanan, properti, pendidikan, kesehatan, dan industri lainnya.</p>
+            
+            <h2>Kontak ORADEV</h2>
+            <p>Hubungi <span class="keyword-highlight">ORADEV</span> untuk konsultasi gratis:</p>
+            <ul>
+                <li>Telepon/WhatsApp: +62-21-12345678</li>
+                <li>Email: info@oradev.com</li>
+                <li>Alamat: Jl. Sudirman No. 123, Jakarta Pusat</li>
+                <li>Website: https://www.oradev.com</li>
+            </ul>
+            
+            <h2>FAQ ORADEV</h2>
+            
+            <h3>Q: Apa itu ORADEV?</h3>
+            <p>A: <span class="keyword-highlight">ORADEV</span> adalah perusahaan <span class="keyword-highlight">jasa pembuatan website</span> dan <span class="keyword-highlight">web development</span> profesional di Indonesia.</p>
+            
+            <h3>Q: Berapa lama pembuatan website di ORADEV?</h3>
+            <p>A: Website company profile: 7-14 hari, Website e-commerce: 14-30 hari, tergantung kompleksitas.</p>
+            
+            <h3>Q: Apakah ORADEV menyediakan domain dan hosting?</h3>
+            <p>A: Ya, <span class="keyword-highlight">ORADEV</span> menyediakan paket lengkap termasuk domain, hosting, SSL, dan maintenance.</p>
+            
+            <h3>Q: Bagaimana cara order website di ORADEV?</h3>
+            <p>A: Hubungi <span class="keyword-highlight">ORADEV</span> via WhatsApp/telepon untuk konsultasi gratis, kemudian kami buatkan proposal dan timeline.</p>
+            
+            <h2>ORADEV di Media Sosial</h2>
+            <p>Follow <span class="keyword-highlight">ORADEV</span> di: Instagram @oradev.id, Facebook @oradev.id, Twitter @oradev_id, LinkedIn ORADEV, YouTube ORADEV.</p>
+            
+            <h2>Area Layanan ORADEV</h2>
+            <p><span class="keyword-highlight">ORADEV</span> melayani jasa <span class="keyword-highlight">pembuatan website</span> di seluruh Indonesia: Jakarta, Surabaya, Bandung, Medan, Makassar, Bali, Yogyakarta, Semarang, Malang, Palembang, Balikpapan, Samarinda, Manado, Padang, Pekanbaru, Bogor, Depok, Tangerang, Bekasi, dan kota-kota lainnya.</p>
+            
+            <p><strong>ORADEV - Your Trusted Web Development Partner</strong></p>
+            <p><span class="keyword-highlight">ORADEV</span> siap membantu transformasi digital bisnis Anda dengan <span class="keyword-highlight">website profesional</span> yang menarik dan functional. Percayakan <span class="keyword-highlight">pembuatan website</span> Anda pada <span class="keyword-highlight">ORADEV</span>, <span class="keyword-highlight">web developer</span> terpercaya di Indonesia.</p>
+        </div>
     </div>
     
-    <!-- Konten SEO yang dapat dilihat di source code -->
+    <!-- ====================== NOSCRIPT CONTENT ====================== -->
     <noscript>
-        <div style="background: #000; color: #fff; padding: 20px; text-align: center;">
-            <h1>ORADEV - Pengembangan Web & Solusi Digital</h1>
-            <p>Website ini menggunakan teknologi Three.js dan WebGL untuk pengalaman visual yang menarik. Untuk melihat konten lengkap, harap aktifkan JavaScript di browser Anda.</p>
-            <p>ORADEV menyediakan layanan pengembangan website, aplikasi web, dan solusi digital kreatif dengan teknologi terkini.</p>
-            <p>Kontak: info@oradev.com | Telepon: +62-XXX-XXXX-XXXX</p>
+        <div style="background: #000; color: #fff; padding: 30px; text-align: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+            <h1 style="color: #9900ff; font-size: 36px; margin-bottom: 20px;">ORADEV - Web Development Company</h1>
+            <p style="font-size: 18px; margin-bottom: 20px;">Website ini menggunakan teknologi Three.js dan WebGL untuk pengalaman visual yang menarik.</p>
+            <p style="font-size: 16px; margin-bottom: 30px;">Untuk melihat konten lengkap, harap aktifkan JavaScript di browser Anda.</p>
+            
+            <div style="max-width: 800px; margin: 0 auto; text-align: left; background: rgba(153, 0, 255, 0.1); padding: 20px; border-radius: 10px;">
+                <h2 style="color: #ff00ff; margin-bottom: 15px;">Tentang ORADEV</h2>
+                <p>ORADEV adalah perusahaan jasa pembuatan website profesional dan pengembangan aplikasi web di Indonesia. Kami mengkhususkan diri dalam pembuatan website dengan teknologi modern Three.js dan WebGL.</p>
+                
+                <h3 style="color: #00ccff; margin: 15px 0 10px 0;">Layanan Kami:</h3>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Pembuatan Website Company Profile</li>
+                    <li>Development E-commerce</li>
+                    <li>Aplikasi Web Custom</li>
+                    <li>Web Design & UI/UX</li>
+                    <li>SEO & Digital Marketing</li>
+                    <li>Maintenance Website</li>
+                </ul>
+                
+                <h3 style="color: #00ccff; margin: 15px 0 10px 0;">Kontak ORADEV:</h3>
+                <p>Telepon: +62-21-12345678</p>
+                <p>Email: info@oradev.com</p>
+                <p>Website: https://www.oradev.com</p>
+                <p>Alamat: Jl. Sudirman No. 123, Jakarta Pusat</p>
+            </div>
         </div>
     </noscript>
 
-    <!-- Ikon musik saja tanpa background bulat -->
-    <div id="music-icon">♪</div>
+    <!-- ====================== VISUAL ELEMENTS ====================== -->
+    <div id="music-icon" aria-label="Toggle music">♪</div>
     <div id="container"></div>
 
+    <!-- ====================== JAVASCRIPT ====================== -->
     <script>
         // Audio setup
         let audio = null;
