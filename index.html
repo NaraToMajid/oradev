@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORADEV 3D</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            overflow: hidden;
+            background: #000;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        #container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        #music-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            font-size: 32px;
+            color: #9900ff;
+            cursor: pointer;
+            text-shadow: 0 0 15px #9900ff;
+            transition: all 0.3s ease;
+            animation: pulseIcon 2s infinite;
+        }
+        
+        #music-icon:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 25px #ff00ff;
+            transform: scale(1.2);
+            animation: none;
+        }
+        
+        #music-icon.playing {
+            color: #ff0066;
+            text-shadow: 0 0 20px #ff0066;
+        }
+        
+        #music-icon.playing:hover {
+            color: #ff3399;
+            text-shadow: 0 0 30px #ff3399;
+        }
+        
+        @keyframes pulseIcon {
+            0% {
+                text-shadow: 0 0 15px rgba(153, 0, 255, 0.7);
+            }
+            50% {
+                text-shadow: 0 0 25px rgba(153, 0, 255, 1);
+            }
+            100% {
+                text-shadow: 0 0 15px rgba(153, 0, 255, 0.7);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #music-icon {
+                font-size: 28px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+</head>
+<body>
+    <!-- Ikon musik saja tanpa background bulat -->
+    <div id="music-icon">♪</div>
+    <div id="container"></div>
+
+    <script>
+        // Audio setup
+        let audio = null;
+        let isPlaying = false;
+        let hasAutoPlayed = false;
+        
+        // Function to simulate "autoplay" with visual feedback
+        function simulateAutoPlay() {
+            if (!hasAutoPlayed) {
+                const musicIcon = document.getElementById('music-icon');
+                
+                // Visual feedback untuk autoplay
+                musicIcon.style.animation = 'none';
+                musicIcon.style.transform = 'scale(1.3)';
+                musicIcon.style.color = '#ff0066';
+                musicIcon.style.textShadow = '0 0 30px #ff0066';
+                
+                setTimeout(() => {
+                    musicIcon.style.transform = 'scale(1)';
+                    musicIcon.classList.add('playing');
+                    musicIcon.textContent = '♪';
+                    
+                    // Play the audio
+                    playAudio();
+                }, 300);
+                
+                hasAutoPlayed = true;
+            }
+        }
+        
+        // Initialize audio
+        function initAudio() {
+            audio = new Audio('lagu.mp3'); // Ganti 'lagu.mp3' dengan nama file lagu Anda
+            audio.loop = true;
+            audio.volume = 0.7;
+            
+            // Preload audio
+            audio.preload = 'auto';
+            
+            // Update icon based on audio state
+            audio.addEventListener('play', () => {
+                isPlaying = true;
+                updateMusicIcon();
+            });
+            
+            audio.addEventListener('pause', () => {
+                isPlaying = false;
+                updateMusicIcon();
+            });
+            
+            // Handle audio errors
+            audio.addEventListener('error', (e) => {
+                console.error('Audio error:', e);
+                const musicIcon = document.getElementById('music-icon');
+                musicIcon.style.color = '#ff4444';
+                musicIcon.textContent = '!';
+            });
+            
+            // When audio loads successfully, try to autoplay
+            audio.addEventListener('canplaythrough', () => {
+                console.log('Audio ready, attempting autoplay...');
+                
+                // Try to autoplay immediately
+                playAudio().then(success => {
+                    if (success) {
+                        console.log('Autoplay successful');
+                        simulateAutoPlay();
+                    } else {
+                        console.log('Autoplay blocked');
+                        // Ikon tetap menunggu interaksi
+                    }
+                });
+            });
+        }
+        
+        // Function to play audio with autoplay handling
+        function playAudio() {
+            return new Promise((resolve) => {
+                if (!audio) {
+                    resolve(false);
+                    return;
+                }
+                
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isPlaying = true;
+                        updateMusicIcon();
+                        resolve(true);
+                    }).catch(error => {
+                        console.log('Autoplay prevented:', error);
+                        resolve(false);
+                    });
+                }
+            });
+        }
+        
+        // Update music icon appearance
+        function updateMusicIcon() {
+            const musicIcon = document.getElementById('music-icon');
+            if (isPlaying) {
+                musicIcon.textContent = '♪';
+                musicIcon.classList.add('playing');
+            } else {
+                musicIcon.textContent = '♪';
+                musicIcon.classList.remove('playing');
+            }
+        }
+        
+        // Toggle play/pause audio
+        function toggleAudio() {
+            if (!audio) return;
+            
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play().catch(error => {
+                    console.error('Playback failed:', error);
+                });
+            }
+        }
+        
+        // Initialize Three.js scene
+        function initThreeJS() {
+            // Setup scene
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x000000);
+            
+            // Setup camera
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            
+            // Adjust camera position based on orientation
+            function updateCameraPosition() {
+                if (window.innerHeight > window.innerWidth) {
+                    // Portrait mode
+                    camera.position.z = 7;
+                    camera.position.y = 1;
+                } else {
+                    // Landscape mode
+                    camera.position.z = 5;
+                    camera.position.y = 0;
+                }
+                camera.updateProjectionMatrix();
+            }
+            
+            updateCameraPosition();
+            
+            // Setup renderer
+            const renderer = new THREE.WebGLRenderer({ 
+                antialias: true, 
+                alpha: false
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            document.getElementById('container').appendChild(renderer.domElement);
+            
+            // CREATE WIDELY SCATTERED BRIGHT STARS
+            function createStars() {
+                const starCount = 300;
+                const starsGeometry = new THREE.BufferGeometry();
+                const starsPositions = new Float32Array(starCount * 3);
+                const starsColors = new Float32Array(starCount * 3);
+                const starsSizes = new Float32Array(starCount);
+                
+                for (let i = 0; i < starCount; i++) {
+                    const phi = Math.acos(1 - 2 * (i + 0.5) / starCount);
+                    const theta = Math.PI * (1 + Math.sqrt(5)) * (i + 0.5);
+                    
+                    const distanceLayer = Math.floor(i / (starCount / 3));
+                    const minRadius = 40 + distanceLayer * 30;
+                    const maxRadius = minRadius + 40;
+                    const radius = minRadius + Math.random() * (maxRadius - minRadius);
+                    
+                    const x = radius * Math.sin(phi) * Math.cos(theta);
+                    const y = radius * Math.sin(phi) * Math.sin(theta);
+                    const z = radius * Math.cos(phi);
+                    
+                    const randomOffset = 0.3;
+                    starsPositions[i * 3] = x + (Math.random() - 0.5) * randomOffset * radius;
+                    starsPositions[i * 3 + 1] = y + (Math.random() - 0.5) * randomOffset * radius;
+                    starsPositions[i * 3 + 2] = z + (Math.random() - 0.5) * randomOffset * radius;
+                    
+                    const brightness = 0.9 + Math.random() * 0.2;
+                    const purpleBase = 0.7 + Math.random() * 0.3;
+                    
+                    starsColors[i * 3] = purpleBase * brightness;
+                    starsColors[i * 3 + 1] = 0.0;
+                    starsColors[i * 3 + 2] = (purpleBase + 0.6) * brightness;
+                    
+                    const sizeMultiplier = 1 + (distanceLayer * 0.5);
+                    starsSizes[i] = (1.5 + Math.random() * 3) * sizeMultiplier;
+                }
+                
+                const backgroundStarCount = 50;
+                const totalStars = starCount + backgroundStarCount;
+                
+                const allPositions = new Float32Array(totalStars * 3);
+                const allColors = new Float32Array(totalStars * 3);
+                const allSizes = new Float32Array(totalStars);
+                
+                allPositions.set(starsPositions, 0);
+                allColors.set(starsColors, 0);
+                allSizes.set(starsSizes, 0);
+                
+                for (let i = 0; i < backgroundStarCount; i++) {
+                    const index = starCount + i;
+                    const radius = 200 + Math.random() * 100;
+                    const phi = Math.acos(2 * Math.random() - 1);
+                    const theta = Math.random() * Math.PI * 2;
+                    
+                    allPositions[index * 3] = radius * Math.sin(phi) * Math.cos(theta);
+                    allPositions[index * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+                    allPositions[index * 3 + 2] = radius * Math.cos(phi);
+                    
+                    const brightness = 0.7 + Math.random() * 0.3;
+                    const purpleBase = 0.6 + Math.random() * 0.3;
+                    
+                    allColors[index * 3] = purpleBase * brightness;
+                    allColors[index * 3 + 1] = 0.0;
+                    allColors[index * 3 + 2] = (purpleBase + 0.4) * brightness;
+                    
+                    allSizes[index] = 4 + Math.random() * 8;
+                }
+                
+                const finalGeometry = new THREE.BufferGeometry();
+                finalGeometry.setAttribute('position', new THREE.BufferAttribute(allPositions, 3));
+                finalGeometry.setAttribute('color', new THREE.BufferAttribute(allColors, 3));
+                finalGeometry.setAttribute('size', new THREE.BufferAttribute(allSizes, 1));
+                
+                function createBrightStarTexture() {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 128;
+                    canvas.height = 128;
+                    const context = canvas.getContext('2d');
+                    
+                    const center = 64;
+                    const gradient = context.createRadialGradient(
+                        center, center, 0,
+                        center, center, 64
+                    );
+                    
+                    gradient.addColorStop(0, 'rgba(255, 220, 255, 1)');
+                    gradient.addColorStop(0.05, 'rgba(255, 180, 255, 0.95)');
+                    gradient.addColorStop(0.15, 'rgba(230, 130, 255, 0.85)');
+                    gradient.addColorStop(0.4, 'rgba(180, 80, 255, 0.6)');
+                    gradient.addColorStop(0.7, 'rgba(130, 30, 220, 0.3)');
+                    gradient.addColorStop(1, 'rgba(80, 0, 150, 0)');
+                    
+                    context.fillStyle = gradient;
+                    context.fillRect(0, 0, 128, 128);
+                    
+                    return new THREE.CanvasTexture(canvas);
+                }
+                
+                const starsMaterial = new THREE.PointsMaterial({
+                    size: 0.3,
+                    vertexColors: true,
+                    transparent: true,
+                    opacity: 1,
+                    sizeAttenuation: true,
+                    blending: THREE.AdditiveBlending,
+                    map: createBrightStarTexture()
+                });
+                
+                const stars = new THREE.Points(finalGeometry, starsMaterial);
+                scene.add(stars);
+                
+                const originalSizes = allSizes.slice();
+                const twinkleSpeeds = [];
+                
+                for (let i = 0; i < totalStars; i++) {
+                    twinkleSpeeds.push({
+                        speed: 0.1 + Math.random() * 0.2,
+                        offset: Math.random() * Math.PI * 2,
+                        amplitude: 0.1 + Math.random() * 0.1
+                    });
+                }
+                
+                function animateStars() {
+                    const time = Date.now() * 0.001;
+                    const sizes = finalGeometry.attributes.size.array;
+                    
+                    for (let i = 0; i < totalStars; i++) {
+                        const speed = twinkleSpeeds[i].speed;
+                        const offset = twinkleSpeeds[i].offset;
+                        const amplitude = twinkleSpeeds[i].amplitude;
+                        const twinkle = Math.sin(time * speed + offset) * amplitude + (1 - amplitude);
+                        sizes[i] = originalSizes[i] * twinkle;
+                    }
+                    
+                    finalGeometry.attributes.size.needsUpdate = true;
+                    stars.rotation.y += 0.00002;
+                }
+                
+                return animateStars;
+            }
+            
+            const animateStars = createStars();
+            
+            // Simple lighting
+            const ambientLight = new THREE.AmbientLight(0x330066, 0.4);
+            scene.add(ambientLight);
+            
+            const frontLight = new THREE.DirectionalLight(0x6600cc, 0.8);
+            frontLight.position.set(0, 0, 10);
+            scene.add(frontLight);
+            
+            const sideLight = new THREE.DirectionalLight(0x440088, 0.6);
+            sideLight.position.set(10, 5, 0);
+            scene.add(sideLight);
+            
+            // Create 3D text
+            const fontLoader = new THREE.FontLoader();
+            
+            fontLoader.load('https://threejs.org/examples/fonts/helvetiker_bold.typeface.json', function(font) {
+                function getTextSize() {
+                    return window.innerHeight > window.innerWidth ? 0.8 : 1;
+                }
+                
+                const textGeometry = new THREE.TextGeometry('ORADEV', {
+                    font: font,
+                    size: getTextSize(),
+                    height: 0.5,
+                    curveSegments: 12,
+                    bevelEnabled: true,
+                    bevelThickness: 0.05,
+                    bevelSize: 0.05,
+                    bevelSegments: 3
+                });
+                
+                textGeometry.center();
+                
+                const textMaterial = new THREE.MeshPhongMaterial({
+                    color: 0x000000,
+                    emissive: 0x330066,
+                    emissiveIntensity: 0.5,
+                    shininess: 120,
+                    specular: 0x7700ff
+                });
+                
+                const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+                scene.add(textMesh);
+                
+                const outlineMaterial = new THREE.LineBasicMaterial({
+                    color: 0x9900ff,
+                    transparent: true,
+                    opacity: 0.6
+                });
+                
+                const edges = new THREE.EdgesGeometry(textGeometry);
+                const outline = new THREE.LineSegments(edges, outlineMaterial);
+                textMesh.add(outline);
+                
+                const controls = new THREE.OrbitControls(camera, renderer.domElement);
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.05;
+                controls.enableZoom = true;
+                controls.zoomSpeed = 0.5;
+                controls.autoRotate = false;
+                controls.maxPolarAngle = Math.PI;
+                controls.minPolarAngle = 0;
+                controls.maxDistance = 20;
+                controls.minDistance = 2;
+                
+                function handleResize() {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    updateCameraPosition();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                    controls.update();
+                }
+                
+                window.addEventListener('resize', handleResize);
+                window.addEventListener('orientationchange', () => {
+                    setTimeout(handleResize, 100);
+                });
+                
+                function animate() {
+                    requestAnimationFrame(animate);
+                    controls.update();
+                    animateStars();
+                    renderer.render(scene, camera);
+                }
+                
+                animate();
+            });
+        }
+        
+        // Event listener for music icon
+        document.getElementById('music-icon').addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleAudio();
+        });
+        
+        // Initialize everything when page loads
+        window.addEventListener('load', () => {
+            initAudio();
+            initThreeJS();
+            
+            // Coba autoplay setelah delay kecil
+            setTimeout(() => {
+                if (!isPlaying && audio) {
+                    playAudio().then(success => {
+                        if (success && !hasAutoPlayed) {
+                            simulateAutoPlay();
+                        }
+                    });
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
